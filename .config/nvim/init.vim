@@ -1,10 +1,10 @@
-"----------------------------------------------
-" Plugin management
-"
-" Download vim-plug from the URL below and follow the installation
-" instructions:
-" https://github.com/junegunn/vim-plug
-"----------------------------------------------
+" Install vim-plug if not installed
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Dependencies
@@ -201,7 +201,7 @@ function! Multiple_cursors_after()
 endfunction
 
 let g:deoplete#auto_completion_start_length = 1
-set omnifunc=jedi#completions
+"set omnifunc=jedi#completions
 let g:jedi#auto_initialization = 1
 
 "let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
